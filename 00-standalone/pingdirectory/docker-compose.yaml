@@ -13,9 +13,9 @@ version: "2.4"
 #-                          +----------------+
 #-
 #- To view PingData Console goto:
-#- 
+#-
 #-    https://localhost:8443/
-#-    
+#-
 #-      Server: pingdirectory
 #-    Username: administrator
 #-    Password: 2FederateM0re
@@ -30,9 +30,6 @@ version: "2.4"
 services:
   pingdirectory:
     image: ${PING_IDENTITY_DEVOPS_REGISTRY}/pingdirectory:${PING_IDENTITY_DEVOPS_TAG}
-    environment:
-      - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-server-profiles.git
-      - SERVER_PROFILE_PATH=getting-started/pingdirectory
     env_file:
       - ${HOME}/.pingidentity/devops
     networks:
@@ -49,17 +46,15 @@ services:
       - "1636:636"
       - "1443:443"
     volumes:
-      - pingdirectory-out:/opt/out
-      
+      - ${HOME}/projects/devops/pingidentity-server-profiles/getting-started/pingdirectory:/opt/in
+
   pingdataconsole:
     image: ${PING_IDENTITY_DEVOPS_REGISTRY}/pingdataconsole:${PING_IDENTITY_DEVOPS_TAG}
     ports:
       - "8443:8443"
-    networks: 
+    networks:
       - pingnet
-                    
+
 networks:
   pingnet:
 
-volumes:
-  pingdirectory-out:

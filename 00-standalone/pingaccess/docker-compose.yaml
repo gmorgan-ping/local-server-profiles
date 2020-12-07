@@ -9,9 +9,9 @@ version: "2.4"
 #-                +---------------+
 #-
 #- To access PingAccess Console
-#- 
+#-
 #-    https://localhost:9000/
-#-    
+#-
 #-    Username: administrator
 #-    Password: 2FederateM0re
 #-------------------------------------------------------------------------------------
@@ -19,9 +19,6 @@ version: "2.4"
 services:
   pingaccess:
     image: ${PING_IDENTITY_DEVOPS_REGISTRY}/pingaccess:${PING_IDENTITY_DEVOPS_TAG}
-    environment:
-      - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-server-profiles.git
-      - SERVER_PROFILE_PATH=getting-started/pingaccess
     env_file:
       - ${HOME}/.pingidentity/devops
     ports:
@@ -30,11 +27,9 @@ services:
     networks:
       - pingnet
     volumes:
-      - pingaccess-out:/opt/out
+      - ${HOME}/projects/devops/pingidentity-server-profiles/getting-started/pingaccess:/opt/in
 
 networks:
   pingnet:
 
-volumes:
-  pingaccess-out:
 
