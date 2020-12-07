@@ -27,7 +27,8 @@ services:
     networks:
       - pingnet
     volumes:
-      - ${HOME}/projects/devops/pingidentity-server-profiles/getting-started/pingfederate:/opt/in
+      - ${HOME}/Projects/devops/pingidentity-server-profiles/getting-started/pingfederate:/opt/in
+      - ${HOME}/Projects/devops/pingfederate_out:/opt/out
 
 networks:
   pingnet:
