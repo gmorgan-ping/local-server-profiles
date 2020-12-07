@@ -17,16 +17,6 @@ version: "2.4"
 #-    Username: administrator                        Server: pingdirectory
 #-    Password: 2FederateM0re                      Username: administrator
 #-                                                 Password: 2FederateM0re
-#-
-#-  PingDelegator App
-#-  -----------------
-#-  https://localhost:6443
-#-    Username: administrator
-#-    Password: 2FederateM0re
-#-
-#- NOTE: If you receive an error after pingdelegator login: 'You could not be authenticated'
-#-       some browsers (i.e. Firefox) may require you to accept cert on each port.
-#-       You should be able to goto https://localhost:1443 and accept the cert to continue.
 #-------------------------------------------------------------------------------------
 
 services:
@@ -66,6 +56,18 @@ services:
       - pingnet
     volumes:
       - ${HOME}/projects/devops/pingidentity-server-profiles/baseline/pingdirectory:/opt/in
+
+  pingaccess:
+    image: ${PING_IDENTITY_DEVOPS_REGISTRY}/pingaccess:${PING_IDENTITY_DEVOPS_TAG}
+    env_file:
+      - ${HOME}/.pingidentity/devops
+    ports:
+      - "3000:3000"
+      - "9000:9000"
+    networks:
+      - pingnet
+    volumes:
+      - ${HOME}/projects/devops/pingidentity-server-profiles/baseline/pingaccess:/opt/in
 
   pingdataconsole:
     image: ${PING_IDENTITY_DEVOPS_REGISTRY}/pingdataconsole:${PING_IDENTITY_DEVOPS_TAG}
