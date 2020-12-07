@@ -8,13 +8,13 @@ Docker-compose examples using opt/in to pass in product configurations
 cd ${HOME}
 mkdir -p projects/devops/
 cd projects/devops/
-git clone \ https://github.com/pingidentity/pingidentity-server-profiles.git
+git clone https://github.com/pingidentity/pingidentity-server-profiles.git
 ```
 
 ## Clone the docker-compose files
 
 ```sh
-git clone \ https://github.com/gmorgan-ping/local-server-profiles.git
+git clone https://github.com/gmorgan-ping/local-server-profiles.git
 ```
 
 ## Launch example(s)
